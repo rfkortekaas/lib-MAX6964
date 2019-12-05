@@ -17,13 +17,15 @@ class MAX6964: public TwoWireDevice {
         MAX6964(TwoWire& wire, const uint8_t addr = MAX6964_ADDRESS_DEFAULT) : TwoWireDevice(wire, addr) {};
         MAX6964(const uint8_t addr = MAX6964_ADDRESS_DEFAULT) : TwoWireDevice(addr) {};
 
-        bool_t begin();
+        bool begin();
+        void setPin(const uint8_t nr);
+        void resetPin(const uint8_t nr);
     
     protected:
 
     private:
         MAX6964(const MAX6964&);
          MAX6964& operator=(const MAX6964&);
-}
+};
 
 #endif // __MAX6964_h
