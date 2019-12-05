@@ -1,0 +1,29 @@
+{
+    "name": "lib-MAX6964",
+    "version": "0.1.0",
+    "description": "Library for the MAX6964 Led Driver/GPO with Intensity Control.",
+    "keywords": "max6964, i2c, led, driver",
+    "repository": 
+    {
+        "type": "git",
+        "url": "https://github.com/rfkortekaas/lib-MAX6964.git"
+    },
+    "authors":
+    [
+        {
+            "name": "R.F. Kortekaas",
+        }
+    ],
+    "dependencies":
+    [
+        {
+            "name": "Wire"
+        },
+        {
+            "name": "lib-TwoWireDevice",
+            "version": "https://github.com/knifter/lib-TwoWireDevice.git"
+        }
+    ],
+    "frameworks": "arduino",
+    "platforms": "*"
+}
