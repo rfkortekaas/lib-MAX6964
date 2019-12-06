@@ -1,5 +1,5 @@
 {
-    "name": "lib-MAX6964",
+    "name": "MAX6964",
     "version": "0.1.0",
     "description": "Library for the MAX6964 Led Driver/GPO with Intensity Control.",
     "keywords": "max6964, i2c, led, driver",
