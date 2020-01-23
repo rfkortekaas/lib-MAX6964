@@ -30,8 +30,12 @@ class MAX6964: public TwoWireDevice {
 
         bool begin();
         void configure();
+        void setPins();
         void setPin(const uint8_t nr);
+        void setPinsPhase1();
+        void setPinPhase1(const uint8_t nr);
         void resetPin(const uint8_t nr);
+        void resetPinPhase1(const uint8_t nr);
         void setIntensity(const uint8_t intensity);
     
     protected:
