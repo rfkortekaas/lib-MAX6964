@@ -14,27 +14,27 @@ bool MAX6964::begin() {
 
 void MAX6964::configure() {
   writereg8(MAX6964_CONFIGURATION_REG, 0b00110101);
-  writereg16(MAX6964_PHASE0_O7_O0_REG, 0xFFFF);
-  writereg16(MAX6964_PHASE1_O7_O0_REG, 0xFFFF);
+  writereg16_ML(MAX6964_PHASE0_O7_O0_REG, 0xFFFF);
+  writereg16_ML(MAX6964_PHASE1_O7_O0_REG, 0xFFFF);
 }
 
 void MAX6964::setPins() {
-  writereg16(MAX6964_PHASE0_O7_O0_REG, 0xFFFF);
+  writereg16_ML(MAX6964_PHASE0_O7_O0_REG, 0xFFFF);
   uint8_t val = readreg8(MAX6964_CONFIGURATION_REG);
   val |= 0b00010000;
   writereg8(MAX6964_CONFIGURATION_REG, val);
 }
 
 void MAX6964::setPins(const uint16_t pins) {
-  writereg16(MAX6964_PHASE0_O7_O0_REG, ~pins);
+  writereg16_ML(MAX6964_PHASE0_O7_O0_REG, ~pins);
 }
 
 void MAX6964::setPin(const uint8_t nr) {
   if (nr < 16) {
-    uint16_t val = readreg16(MAX6964_PHASE0_O7_O0_REG);
+    uint16_t val = readreg16_ML(MAX6964_PHASE0_O7_O0_REG);
     val |= (1UL << nr);
 
-    writereg16(MAX6964_PHASE0_O7_O0_REG, val);
+    writereg16_ML(MAX6964_PHASE0_O7_O0_REG, val);
   } else if (nr == 16) {
     uint8_t val = readreg8(MAX6964_CONFIGURATION_REG);
     val |= 0b00010000;
@@ -43,11 +43,11 @@ void MAX6964::setPin(const uint8_t nr) {
 }
 
 void MAX6964::setPinsPhase1() {
-  writereg16(MAX6964_PHASE1_O7_O0_REG, 0xFFFF);
+  writereg16_ML(MAX6964_PHASE1_O7_O0_REG, 0xFFFF);
 }
 
 void MAX6964::setPinsPhase1(const uint16_t pins) {
-  writereg16(MAX6964_PHASE1_O7_O0_REG, ~pins);
+  writereg16_ML(MAX6964_PHASE1_O7_O0_REG, ~pins);
   uint8_t val = readreg8(MAX6964_CONFIGURATION_REG);
   val |= 0b00100000;
   writereg8(MAX6964_CONFIGURATION_REG, val);
@@ -55,10 +55,10 @@ void MAX6964::setPinsPhase1(const uint16_t pins) {
 
 void MAX6964::setPinPhase1(const uint8_t nr) {
   if (nr < 16) {
-    uint16_t val = readreg16(MAX6964_PHASE1_O7_O0_REG);
+    uint16_t val = readreg16_ML(MAX6964_PHASE1_O7_O0_REG);
     val |= (1UL << nr);
 
-    writereg16(MAX6964_PHASE1_O7_O0_REG, val);
+    writereg16_ML(MAX6964_PHASE1_O7_O0_REG, val);
   } else if (nr == 16) {
     uint8_t val = readreg8(MAX6964_CONFIGURATION_REG);
     val |= 0b00100000;
@@ -67,7 +67,7 @@ void MAX6964::setPinPhase1(const uint8_t nr) {
 }
 
 void MAX6964::resetPins() {
-  writereg16(MAX6964_PHASE0_O7_O0_REG, 0x0);
+  writereg16_ML(MAX6964_PHASE0_O7_O0_REG, 0x0);
   uint8_t val = readreg8(MAX6964_CONFIGURATION_REG);
   val |= 0b00010000;
   writereg8(MAX6964_CONFIGURATION_REG, val);
@@ -75,10 +75,10 @@ void MAX6964::resetPins() {
 
 void MAX6964::resetPin(const uint8_t nr) {
   if (nr < 16) {
-    uint16_t val = readreg16(MAX6964_PHASE0_O7_O0_REG);
+    uint16_t val = readreg16_ML(MAX6964_PHASE0_O7_O0_REG);
     val &= ~(1UL << nr);
 
-    writereg16(MAX6964_PHASE0_O7_O0_REG, val);
+    writereg16_ML(MAX6964_PHASE0_O7_O0_REG, val);
   } else if (nr == 16) {
     uint8_t val = readreg8(MAX6964_CONFIGURATION_REG);
     val &= ~(0b00010000);
@@ -87,7 +87,7 @@ void MAX6964::resetPin(const uint8_t nr) {
 }
 
 void MAX6964::resetPinsPhase1() {
-  writereg16(MAX6964_PHASE1_O7_O0_REG, 0x0);
+  writereg16_ML(MAX6964_PHASE1_O7_O0_REG, 0x0);
   uint8_t val = readreg8(MAX6964_CONFIGURATION_REG);
   val |= 0b00100000;
   writereg8(MAX6964_CONFIGURATION_REG, val);
@@ -95,10 +95,10 @@ void MAX6964::resetPinsPhase1() {
 
 void MAX6964::resetPinPhase1(const uint8_t nr) {
   if (nr < 16) {
-    uint16_t val = readreg16(MAX6964_PHASE1_O7_O0_REG);
+    uint16_t val = readreg16_ML(MAX6964_PHASE1_O7_O0_REG);
     val &= ~(1UL << nr);
 
-    writereg16(MAX6964_PHASE1_O7_O0_REG, val);
+    writereg16_ML(MAX6964_PHASE1_O7_O0_REG, val);
   } else if (nr == 16) {
     uint8_t val = readreg8(MAX6964_CONFIGURATION_REG);
     val &= ~(0b00100000);
